@@ -1,0 +1,31 @@
+<!-- <div class="container"> -->
+	<h1 style="color: #d5a; font-family: 微軟正黑體;">餐點列表</h1>
+
+	<%= link_to "新增", new_item_path %> 
+
+<div class="row">
+	<!-- <ul> -->
+	<% @items.each do |item| %>
+	<div class="col-4 mb-3">
+			<!-- <li> -->
+		<div class="card items">		
+			<div class="cat">
+					<%= image_tag item.cover.variant(resize_to_limit: [500, 500]), class:'cover-image' if item.cover.attached? %>	
+			</div>
+			<div class="card-body">
+				<h5 class="card-title">
+					<%= link_to item.name, item %>
+				</h5>
+					<%= link_to "編輯", edit_item_path(item.id), class:'btn btn-primary' %>		
+  				<%= link_to "刪除", item_path(item.id), method: "delete", data: {confirm: "確定刪除?"}, class:'btn btn-success' %>
+  				<%= link_to "加到購物車", add_to_cart_item_path(item), method: 'post', data: {confirm: "加到購物車"}, class:'btn btn-danger' %>
+					<!-- </li> -->
+		  </div>
+		</div>
+	</div>
+	<% end %>
+	<!-- </ul> -->
+</div>
+
+
+

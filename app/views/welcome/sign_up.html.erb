@@ -1,0 +1,38 @@
+
+
+<h1 style="color: #a24; font-family: 微軟正黑體;">使用者註冊</h1>
+			
+			<%=	form_for(@user, url: '/sign_up', method:'post') do |f| %> <!-- 自動加token -->
+
+			<% if @user.errors.any? %>
+					<ul>
+							<%  @user.errors.full_messages.each do |message| %>
+							<li><%= message %></li>
+						<% end %>
+					</ul>
+			<% end %>
+			
+					<div>
+					<%= f.label :email %>
+					<%= f.text_field :email %>
+					<!-- <input type="text" name="signup" style="margin:10px;"> -->
+					</div><br>
+					<div>
+					<%= f.label :password, "密碼" %>
+					<%= f.password_field :password %>
+					<!-- <input type="password" name="password" style="margin: 10px;">  --><br>
+					</div><br>
+					<div>
+					<%= f.label :password_confirmation, "密碼確認" %>
+					<%= f.password_field :password_confirmation %>
+				<!-- 	<input type="password_confirm" name="passwordconfirm" style="margin: 10px;"> --><br>
+					</div><br>
+					<%= f.submit "註冊" %>
+					<!-- <input type="submit" name="確認" value="註冊" style="margin: 10px 0;"> -->
+    <% end %>
+
+			<!-- <form action="/sign_up" method="post" style="padding-top: 20px;">
+			
+      </form> -->
+     
+		

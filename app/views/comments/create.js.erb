@@ -1,0 +1,5 @@
+var comments = document.querySelector('#comments');
+comments.innerHTML = "<%= j render ('comments/comment', comment: @comment) %>" + comments.innerHTML;
+// rails only。 erb檔才能這樣寫，在erb檔寫js。 要用var 因為let只能選宣告一次，之前用過(?)。
+
+document.querySelector('#comment_content').value = '';

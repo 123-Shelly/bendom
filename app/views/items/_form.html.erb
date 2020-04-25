@@ -1,0 +1,40 @@
+<!--  new edit 共用 -->
+
+ <%= form_for(item) do |f| %>
+
+       <% if item.errors.any? %>
+ 					<ul>
+ 							<% item.errors.full_messages.each do |message| %>
+ 							<li><%= message %></li>
+ 						<% end %>
+ 					</ul>
+ 			<% end %>
+
+ 			<div>
+ 				<%= f.label :cover %>
+ 				<%= f.file_field :cover %>
+ 			</div>
+
+			<div class="">
+		    <%= f.label :category %>
+		    <%= f.collection_select :category_id, Category.all, :id, :name, prompt: true  %>
+	    </div>
+
+ 		  <div>
+ 		    <%= f.label :name %>
+ 		    <%= f.text_field :name %>
+ 		  </div>
+ 		  <div>
+ 		    <%= f.label :description %>
+ 		    <%= f.text_area :description %>
+ 		  </div>
+ 		  <div>
+ 		    <%= f.label :price %>
+ 		    <%= f.number_field :price %>
+ 		  </div>
+ 		  <div>
+ 		    <%= f.label :spec %>
+ 		    <%= f.text_field :spec %>
+ 		  </div>
+ 		  <%= f.submit "送出" %>
+ <% end %>
